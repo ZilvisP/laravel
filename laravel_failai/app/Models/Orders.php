@@ -8,18 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property string $name
- * @property string $slug
- * @property string $description
- * @property string $image
+ * @property int $user_id
+ * @property int $shipping_address_id
+ * @property int $billing_address_id
  * @property int $status_id
- * @property int $parent_id
- * @property string $sort_order
  * @property Carbon $created_at
  * @property Carbon $updated_at
-*/
-
-class Category extends Model
+ */
+class Orders extends Model
 {
     use HasFactory;
 }

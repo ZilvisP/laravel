@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('description');
             $table->string('image');
-            $table->string('status');
+            $table->unsignedBigInteger('status_id');
             $table->unsignedBigInteger('parent_id');
             $table->string('sort_order');
             $table->timestamps();
