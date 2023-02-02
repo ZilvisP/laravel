@@ -16,13 +16,38 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property Orders $order
+ * @property Product $product
+ * @property Status $status
  */
+
 class Order_details extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'quantity',
+        'product_name',
+    ];
+    protected $guarded = [
+        'Total',
+        'order_id',
+        'product_id',
+        'status_id'
+    ];
+    public function status() {
+        return $this->belongsTo(Status::class);
+    }
+    public function product() {
+        return $this->belongsTo(Product::class);
+    }
+    public function order() {
+        return $this->belongsTo(Orders::class);
+    }
+
 }
 
-id
+
 
 
 

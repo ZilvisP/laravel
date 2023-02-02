@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('statuses', function (Blueprint $table) {
             $table->id();
-            $table->string('status');
+            $table->string('name')->nullable(false);
+            $table->string('type')->nullable(false); // order, payment, etc.
+            $table->timestamps();
         });
     }
 
