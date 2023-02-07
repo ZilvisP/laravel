@@ -7,11 +7,11 @@
             </div>
             <div class="card-content">
                 <div>ID: {{$person->id}}</div>
-                <p>Price: {{$person->personal_code}}</p>
-                <p>Description: {{$person->email_address}}</p>
-                <p>Categories: {{$person->phone_number}}</p>
-                <p>Categories: {{$person->address_id}}</p>
-                <p>Categories: {{$person->user_id}}</p>
+                <p>Personal code: {{$person->personal_code}}</p>
+                <p>Email@: {{$person->email_address}}</p>
+                <p>Phone number: {{$person->phone_number}}</p>
+                <p>address id: {{$person->address_id}}</p>
+                <p>user id: {{$person->user_id}}</p>
 
             </div>
             <div class="card-action">
