@@ -1,6 +1,7 @@
 <?php
 
-use App\Models\Product;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,53 +14,43 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', \App\Http\Controllers\HomeController::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//'as' neveikiantis budas priskirti pavadinima
+//Route::get('/products', [ProductsController::class, 'index', 'as' => 'products.index']);
+Route::get('/products', [ProductsController::class, 'index'])->name('products.index');
+Route::get('/products/create', [ProductsController::class, 'create'])->name('products.create');
+Route::post('/products', [ProductsController::class, 'store'])->name('products.store');
+Route::get('/products/{product}', [ProductsController::class, 'show'])->name('products.show');
 
-Route::get('/product/{id}', function($id) {
-    $product = Product::firstOrCreate(
-        [
-            'id' => $id
-        ],
-        [
-            'name' => 'Londonas to Paris',
-            'category_id' => 5,
-            'price' => 1000,
-            'status_id' => 5,
-            'slug' => 'london-to-parisasdfgh',
-            'description' => 'London to Paris',
-            'image' => 'london-to-paris.jpg',
-            'color' => 'red',
-            'size' => 'XL'
-        ]
-    );
-    return $product;
-});
+Route::get('/products/{product}/edit', [ProductsController::class, 'edit'])->name('products.edit');
 
-Route::get('/products', function(){
-    return Product::query()->with('category', 'status')->get();
-});
+Route::put('/products/{product}', [ProductsController::class, 'update'])->name('products.update');
+Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->name('products.destroy');
 
-Route::get('/products-del', function(){
-    return Product::all()->map(function($product){
-        $product->delete();
-    });
-});
 
-Route::get('/new-product', function() {
-    $duomenys = [
-        'name' => 'Apple',
-        'slug' => 'apple',
-        'price' => 1000,
-        'description' => 'Mmmm..',
-        'image' => 'london-to-paris.jpg',
-        'color' => 'red',
-        'size' => 'XL',
-    ];
 
-    $product  = Product::create($duomenys);
+Route::get('/categories', [CategoriesController::class, 'index']);
+Route::get('/categories/create', [CategoriesController::class, 'create']);
+Route::post('/categories', [CategoriesController::class, ' store']);
+Route::get('/categories/{category}', [CategoriesController::class, 'show']);
+Route::get('/categories/{category}/edit', [CategoriesController::class, 'edit']);
+Route::put('/categories/{category}', [CategoriesController::class, 'update']);
+Route::delete('/categories/{category}', [CategoriesController::class, 'destroy']);
 
-    dd($product);
-});
+//sutrumpintai laravelis sugeneruoja
+//Route::resource('products', ProductsController::class);
+
+Route::resources([
+    'persons' => \App\Http\Controllers\PersonsController::class,
+    'orders' => \App\Http\Controllers\OrdersController::class,
+    'statuses' => \App\Http\Controllers\StatusesController::class,
+    'addresses' => \App\Http\Controllers\AddressesController::class,
+    'users' => \App\Http\Controllers\UsersController::class
+]);
+
+
+
+
+
+

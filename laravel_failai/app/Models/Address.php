@@ -11,9 +11,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $street
  * @property string $post_code
  */
-class Addresses extends Model
+class Address extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
 
     protected $fillable = [
         'country',

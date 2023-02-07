@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use mysql_xdevapi\Table;
 
 /**
  * @property int $id
@@ -15,27 +16,26 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $phone_number
  * @property int $address_id
  * @property int $user_id
- * @property Addresses $addresses
+ * @property Address $addresses
  * @property User $user
  */
-class People extends Model
+class Person extends Model
 {
-    use HasFactory;
+public $timestamps = false;
 
+    protected $table = 'persons';
     protected $fillable = [
         'first_name',
         'second_name',
         'personal_code',
         'email_address',
         'phone_number',
-
-    ];
-    protected $guarded = [
         'address_id',
         'user_id'
     ];
+
     public function addresses() {
-        return $this->belongsTo(Addresses::class);
+        return $this->belongsTo(Address::class);
     }
     public function user() {
         return $this->belongsTo(User::class);

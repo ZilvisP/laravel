@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * @property Addresses $addresses
+ * @property Address $addresses
  * @property User $user
  * @property Status $status
  */

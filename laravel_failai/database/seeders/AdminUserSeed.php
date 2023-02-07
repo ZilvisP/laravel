@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\People;
+use App\Models\Person;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -26,16 +26,16 @@ class AdminUserSeed extends Seeder
             ]
         );
 
-        People::updateOrCreate(
+        Person::updateOrCreate(
             [
                 'user_id' => $user->id,
-                'email' => 'admin@email.com',
+                'email_address' => 'admin@email.com',
             ],
             [
-                'name' => 'Admin',
-                'surname' => 'Admin',
+                'first_name' => 'Admin',
+                'second_name' => 'Admin',
                 'personal_code' => '00000000000',
-                'phone' => '000000000',
+                'phone_number' => '000000000',
             ]
         );
     }

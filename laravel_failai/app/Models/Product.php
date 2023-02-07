@@ -29,19 +29,17 @@ class Product extends Model
 
     protected $fillable = [
         'name',
+        'slug',
         'description',
         'image',
+        'category_id',
         'color',
         'size',
         'price',
-        'slug'
-
-    ];
-    protected $guarded = [
-        'category_id',
+        'status_id',
         'brand_id',
-        'status_id'
     ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
