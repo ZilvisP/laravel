@@ -1,4 +1,5 @@
-
+@extends('layouts.admin.main')
+@section('content')
     <div class="row">
         <div class="col s12 m3">
             <div class="card">
@@ -32,3 +33,4 @@
             </div>
         </div>
     </div>
+@endsection

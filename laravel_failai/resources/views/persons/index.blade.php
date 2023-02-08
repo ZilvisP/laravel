@@ -1,3 +1,5 @@
+@extends('layouts.admin.main')
+@section('content')
 <div class="row">
     <div class="col s12"></div>
     <h2>Person list</h2>
@@ -41,3 +43,4 @@
     </table>
 </div>
 </div>
+@endsection

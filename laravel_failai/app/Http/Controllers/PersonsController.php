@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\PersonRequest;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class PersonsController extends Controller
         return view('persons.create');
     }
 
-    public function store(Request $request)
+    public function store(PersonRequest $request)
     {
         $persons = Person::create($request->all());
         return redirect()->route('persons.show', $persons);
@@ -34,7 +35,7 @@ class PersonsController extends Controller
         return view('persons.edit', compact('person'));
     }
 
-    public function update(Request $request, Person $person)
+    public function update(PersonRequest $request, Person $person)
     {
         $person->update($request->all());
         return redirect()->route('persons.show', $person);

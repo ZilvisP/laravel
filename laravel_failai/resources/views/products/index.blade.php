@@ -1,4 +1,5 @@
-
+@extends('layouts.admin.main')
+@section('content')
     <div class="row">
         <div class="col s12">
             <h1>Products</h1>
@@ -17,7 +18,13 @@
                     <tr>
                         <td>{{$product->id}}</td>
                         <td>{{$product->name}}</td>
+                        <td>{{$product->slug}}</td>
+                        <td>{{$product->description}}</td>
+                        <td>{{$product->image}}</td>
+                        <td>{{$product->category_id}}</td>
+                        <td>{{$product->size}}</td>
                         <td>{{$product->price}}</td>
+                        <td>{{$product->status_id}}</td>
                         <td>
                             <a href="{{route('products.edit', $product->id)}}" class="btn btn-primary">Edit</a>
                             <form action="{{route('products.destroy', $product->id)}}" method="post">
@@ -32,4 +39,4 @@
             </table>
         </div>
     </div>
-
+@endsection

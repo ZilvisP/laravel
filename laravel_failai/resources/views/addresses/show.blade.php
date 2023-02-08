@@ -1,3 +1,5 @@
+@extends('layouts.admin.main')
+@section('content')
 <div class="row">
     <div class="col s12 m3">
         <div class="card">
@@ -26,7 +28,7 @@
                 <form action="{{ route('addresses.destroy', $address->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit"data-tooltip="destroy"
+                    <button type="submit" data-tooltip="destroy"
                             class="tooltipped waves-effect waves-light red btn-small">
                         <i class="tiny material-icons">delete</i>
                     </button>
@@ -35,3 +37,4 @@
         </div>
     </div>
 </div>
+@endsection

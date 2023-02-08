@@ -1,19 +1,30 @@
 
-    <h1>Editing</h1>
-    <span>Redagavimo forma</span>
+@extends('layouts.admin.main')
+@section('content')
+    <h1>Editing Product</h1>
     <form action="{{route('products.update', $product)}}" method="post">
         @method('PUT')
         @csrf
-        <input type="text" name="name" placeholder="Name" value="{{$product->name}}"><br>
-        <input type="text" name="slug" placeholder="Slug" value="{{$product->slug}}"><br>
-        <input type="text" name="description" placeholder="Description" value="{{$product->description}}"><br>
-        <input type="text" name="image" placeholder="Image" value="{{$product->image}}"><br>
-        <input type="text" name="category_id" placeholder="Category ID" value="{{$product->category_id}}"><br>
-        <input type="text" name="color" placeholder="Color" value="{{$product->color}}"><br>
-        <input type="text" name="size" placeholder="Size" value="{{$product->size}}"><br>
-        <input type="text" name="price" placeholder="Price" value="{{$product->price}}"><br>
-        <input type="text" name="status_id" placeholder="Status ID" value="{{$product->status_id}}"><br>
+        <input type="text" name="name" placeholder="Name" value="{{old('name')}}"
+               class="@error('name')is-invalid @enderror"><br>
+        <input type="text" name="slug" placeholder="Slug" value="{{old('slug')}}"
+               class="@error('slug')is-invalid @enderror"><br>
+        <input type="text" name="description" placeholder="Description" value="{{old('description')}}"
+               class="@error('description')is-invalid @enderror"><br>
+        <input type="text" name="image" placeholder="Image" value="{{old('image')}}"
+               class="@error('image')is-invalid @enderror"><br>
+        <input type="text" name="category_id" placeholder="Category ID" value="{{old('category_id')}}"
+               class="@error('category_id')is-invalid @enderror"><br>
+        <input type="text" name="color" placeholder="Color" value="{{old('color')}}"
+               class="@error('color')is-invalid @enderror"><br>
+        <input type="text" name="size" placeholder="Size" value="{{old('size')}}"
+               class="@error('size')is-invalid @enderror"><br>
+        <input type="text" name="price" placeholder="Price" value="{{old('price')}}"
+               class="@error('price')is-invalid @enderror"><br>
+        <input type="text" name="status_id" placeholder="Status ID" value="{{old('status_id')}}"
+               class="@error('status_id')is-invalid @enderror"><br>
         <hr>
         <input type="submit" class="waves-effect waves-light btn" value="Update">
     </form>
 
+@endsection

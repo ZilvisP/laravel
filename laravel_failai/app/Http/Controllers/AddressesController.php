@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddressRequest;
 use App\Models\Address;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,7 @@ class AddressesController extends Controller
     public function index()
     {
         $addresses = Address::all();
-        return view('addresses.index', ['adresai'=> $addresses]);
+        return view('addresses.index', ['adresai' => $addresses]);
     }
 
     public function create()
@@ -18,11 +19,10 @@ class AddressesController extends Controller
         return view('addresses.create');
     }
 
-    public function store(Request $request)
+    public function store(AddressRequest $request)
     {
         $address = Address::create($request->all());
         return redirect()->route('addresses.show', $address);
-
     }
 
     public function show(Address $address)
@@ -35,7 +35,7 @@ class AddressesController extends Controller
         return view('addresses.edit', compact('address'));
     }
 
-    public function update(Request $request, Address $address)
+    public function update(AddressRequest $request, Address $address)
     {
         $address->update($request->all());
         return redirect()->route('addresses.show', $address);

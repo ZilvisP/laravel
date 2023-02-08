@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $description
  * @property string $image
  * @property int $category_id
- * @property int $brand_id
  * @property string $color
  * @property string $size
  * @property string $price
@@ -37,7 +36,6 @@ class Product extends Model
         'size',
         'price',
         'status_id',
-        'brand_id',
     ];
 
     public function category()
