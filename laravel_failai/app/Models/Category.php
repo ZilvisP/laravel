@@ -28,8 +28,6 @@ class Category extends Model
         'name',
         'image',
         'description',
-    ];
-    protected $guarded = [
         'status_id',
         'sort_order',
         'parent_id'

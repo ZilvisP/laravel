@@ -5,23 +5,23 @@
     <form action="{{route('products.update', $product)}}" method="post">
         @method('PUT')
         @csrf
-        <input type="text" name="name" placeholder="Name" value="{{old('name')}}"
+        <input type="text" name="name" placeholder="Name" value="{{old('name') ?? $product->name}}"
                class="@error('name')is-invalid @enderror"><br>
-        <input type="text" name="slug" placeholder="Slug" value="{{old('slug')}}"
+        <input type="text" name="slug" placeholder="Slug" value="{{old('slug') ?? $product->slug}}"
                class="@error('slug')is-invalid @enderror"><br>
-        <input type="text" name="description" placeholder="Description" value="{{old('description')}}"
+        <input type="text" name="description" placeholder="Description" value="{{old('description') ?? $product->description}}"
                class="@error('description')is-invalid @enderror"><br>
-        <input type="text" name="image" placeholder="Image" value="{{old('image')}}"
+        <input type="text" name="image" placeholder="Image" value="{{old('image') ?? $product->image}}"
                class="@error('image')is-invalid @enderror"><br>
-        <input type="text" name="category_id" placeholder="Category ID" value="{{old('category_id')}}"
+        <input type="text" name="category_id" placeholder="Category ID" value="{{old('category_id') ?? $product->category_id}}"
                class="@error('category_id')is-invalid @enderror"><br>
-        <input type="text" name="color" placeholder="Color" value="{{old('color')}}"
+        <input type="text" name="color" placeholder="Color" value="{{old('color') ?? $product->color}}"
                class="@error('color')is-invalid @enderror"><br>
-        <input type="text" name="size" placeholder="Size" value="{{old('size')}}"
+        <input type="text" name="size" placeholder="Size" value="{{old('size') ?? $product->size}}"
                class="@error('size')is-invalid @enderror"><br>
-        <input type="text" name="price" placeholder="Price" value="{{old('price')}}"
+        <input type="text" name="price" placeholder="Price" value="{{old('price') ?? $product->price}}"
                class="@error('price')is-invalid @enderror"><br>
-        <input type="text" name="status_id" placeholder="Status ID" value="{{old('status_id')}}"
+        <input type="text" name="status_id" placeholder="Status ID" value="{{old('status_id') ?? $product->status_id}}"
                class="@error('status_id')is-invalid @enderror"><br>
         <hr>
         <input type="submit" class="waves-effect waves-light btn" value="Update">

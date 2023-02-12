@@ -23,6 +23,12 @@ class PersonsController extends Controller
         $persons = Person::create($request->all());
         return redirect()->route('persons.show', $persons);
 
+//Pasnaudojant Manageri, kuris sukurs useri jei neegzistuoja
+//        public function store(PersonStoreRequest $request)
+//    {
+//        $person = $this->manager->createCustomer($request);
+//        return redirect()->route('persons.show', $person);
+
     }
 
     public function show(Person $person)

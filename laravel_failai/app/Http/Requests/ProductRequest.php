@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProductRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class ProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,12 +29,12 @@ class ProductRequest extends FormRequest
             'slug' => ['required', 'string', 'min:3', 'max:255'],
             'description' => ['nullable', 'string', 'min:3'],
 
-            'image' => ['nullable', 'max_file_size'],
+//            'image' => ['nullable', 'max_file_size'],
 
             'category_id' => ['required', 'integer', 'exists:categories,id'],
-            'color' => ['nullable', 'in_array:Red,Green,Blue,Black,White'],
+            'color' => ['nullable', Rule::in(['Red','Green','Blue','Black','White'])],
 
-            'size' => ['nullable', 'in_array:XS,S,M,L,XL'],
+            'size' => ['nullable', Rule::in(['XS','S','M','L','XL'])],
             'price' => ['required', 'integer', 'min:0'],
             'status_id' => ['required', 'integer', 'exists:statuses,id'],
         ];

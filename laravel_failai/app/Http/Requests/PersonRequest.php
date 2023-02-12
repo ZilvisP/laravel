@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\FirstUppercaseRule;
+use App\Rules\PersonalIdTypeLT;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PersonRequest extends FormRequest
@@ -13,7 +15,7 @@ class PersonRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,11 +26,11 @@ class PersonRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => ['required', 'string', 'min:2', 'max:255'],
-            'second_name' => ['required', 'string', 'min:2', 'max:255'],
-            'personal_code' => ['required', 'integer', 'Personal_ID_Type_LT'],
+            'first_name' => ['required', 'string', 'min:2', 'max:255', new FirstUppercaseRule()],
+            'last_name' => ['required', 'string', 'min:2', 'max:255', new FirstUppercaseRule()],
+            'personal_code' => ['required', 'integer', new PersonalIdTypeLT],
             'email_address' => ['required', 'string', 'min:3', 'max:255', 'Email'],
-            'phone_number' => ['required', 'integer', 'digits:15', 'phone_number'],
+            'phone_number' => ['required', 'integer'],
             'address_id' => ['required', 'integer', 'exists:addresses,id'],
             'user_id' => ['required', 'integer', 'exists:users,id'],
         ];
@@ -47,10 +49,10 @@ class PersonRequest extends FormRequest
             'first_name.max' => 'This is definitely the longest name we`ve heard, maybe we have another option?',
             'first_name.min' => 'Name may be too short.',
 
-            'second_name.required' => 'We wouldn`t want send product to wrong person, do we? Last name is required.',
-            'second_name.string' => 'Last name must contain only Latin characters. You can be playful with User name later on!',
-            'second_name.max' => 'This is definitely the longest last name we`ve heard, maybe we have another option?',
-            'second_name.min' => 'Last name may be too short.',
+            'last_name.required' => 'We wouldn`t want send product to wrong person, do we? Last name is required.',
+            'last_name.string' => 'Last name must contain only Latin characters. You can be playful with User name later on!',
+            'last_name.max' => 'This is definitely the longest last name we`ve heard, maybe we have another option?',
+            'last_name.min' => 'Last name may be too short.',
 
             'personal_code.required' => 'Identification number must be provided for authorization while doing payments.',
             'personal_code.integer' => 'Personal ID must consist numbers only.',

@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col s12">
             <h1>Products</h1>
-            <a href="{{route('products.create')}}" class="btn btn-primary">Create new product</a>
+            <a href="{{route('products.create')}}" class="btn btn-primary">Create new</a>
             <table class="table">
                 <thead>
                 <tr>

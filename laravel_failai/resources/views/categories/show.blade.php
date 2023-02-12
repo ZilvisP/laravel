@@ -6,30 +6,31 @@
         <div class="card">
             <div class="card-image">
                 <img src="https://picsum.photos/200"> <br>
-                <h2><span class="card-title" style="color: #c57f29">{{$person->first_name}}  {{$person->last_name}}</span></h2>
+                <h2><span class="card-title" style="color: #c57f29">{{$category->name}}</span></h2>
             </div>
             <div class="card-content">
-                <div>ID: {{$person->id}}</div>
-                <p>Personal code: {{$person->personal_code}}</p>
-                <p>Email@: {{$person->email_address}}</p>
-                <p>Phone number: {{$person->phone_number}}</p>
-                <p>address id: {{$person->address_id}}</p>
-                <p>user id: {{$person->user_id}}</p>
+                <div>ID: {{$category->id}}</div>
+                <p>Category slug: {{$category->slug}}</p>
+                <p>Description: {{$category->description}}</p>
+                <p>Image: {{$category->image}}</p>
+                <p>status id: {{$category->status_id}}</p>
+                <p>parent id: {{$category->parent_id}}</p>
+                <p>sort order: {{$category->sort_order}}</p>
 
             </div>
             <div class="card-action">
-                <a href="{{ route('persons.edit', $person->id) }}"
+                <a href="{{ route('categories.edit', $category->id) }}"
                    data-tooltip="Edit"
                    class="tooltipped waves-effect waves-light green btn-small">
                     <i class="tiny material-icons">Edit</i>
                 </a>
-                <a href="{{ route('persons.index') }}"
+                <a href="{{ route('categories.index') }}"
                    data-tooltip="Back to persons"
                    class="tooltipped waves-effect waves-light green btn-small">
                     <i class="tiny material-icons">Back</i>
                 </a>
 
-                <form action="{{ route('persons.destroy', $person->id) }}" method="POST">
+                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit"data-tooltip="destroy"

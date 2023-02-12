@@ -10,7 +10,7 @@ use mysql_xdevapi\Table;
 /**
  * @property int $id
  * @property string $first_name
- * @property string $second_name
+ * @property string $last_name
  * @property string $personal_code
  * @property string $email_address
  * @property string $phone_number
@@ -26,7 +26,7 @@ public $timestamps = false;
     protected $table = 'persons';
     protected $fillable = [
         'first_name',
-        'second_name',
+        'last_name',
         'personal_code',
         'email_address',
         'phone_number',

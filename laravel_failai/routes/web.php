@@ -30,13 +30,13 @@ Route::delete('/products/{product}', [ProductsController::class, 'destroy'])->na
 
 
 
-Route::get('/categories', [CategoriesController::class, 'index']);
-Route::get('/categories/create', [CategoriesController::class, 'create']);
-Route::post('/categories', [CategoriesController::class, ' store']);
-Route::get('/categories/{category}', [CategoriesController::class, 'show']);
-Route::get('/categories/{category}/edit', [CategoriesController::class, 'edit']);
-Route::put('/categories/{category}', [CategoriesController::class, 'update']);
-Route::delete('/categories/{category}', [CategoriesController::class, 'destroy']);
+Route::get('/categories', [CategoriesController::class, 'index'])->name('categories.index');
+Route::get('/categories/create', [CategoriesController::class, 'create'])->name('categories.create');
+Route::post('/categories', [CategoriesController::class, 'store'])->name('categories.store');
+Route::get('/categories/{category}', [CategoriesController::class, 'show'])->name('categories.show');
+Route::get('/categories/{category}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
+Route::put('/categories/{category}', [CategoriesController::class, 'update'])->name('categories.update');
+Route::delete('/categories/{category}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
 
 //sutrumpintai laravelis sugeneruoja
 //Route::resource('products', ProductsController::class);

@@ -7,8 +7,8 @@
     @csrf
     <input type="text" name="first_name" placeholder="First name" value="{{old('first_name') ?? $person->first_name}}"
            class="@error('first_name')is-invalid @enderror"><br>
-    <input type="text" name="second_name" placeholder="Second name" value="{{old('second_name') ?? $person->second_name}}"
-           class="@error('second_name')is-invalid @enderror"><br>
+    <input type="text" name="last_name" placeholder="Last name" value="{{old('last_name') ?? $person->last_name}}"
+           class="@error('last_name')is-invalid @enderror"><br>
     <input type="text" name="personal_code" placeholder="Personal code" value="{{old('personal_code') ?? $person->personal_code}}"
            class="@error('personal_code')is-invalid @enderror"><br>
     <input type="text" name="email_address" placeholder="email_address" value="{{old('email_address') ?? $person->email_address}}"

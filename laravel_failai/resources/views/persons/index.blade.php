@@ -9,7 +9,7 @@
         <tr>
             <th>ID</th>
             <th>First name</th>
-            <th>Second name</th>
+            <th>Last name</th>
             <th>Personal code</th>
             <th>Email@ address</th>
             <th>Phone number</th>
@@ -23,7 +23,7 @@
             <tr>
                 <td>{{$person->id}}</td>
                 <td>{{$person->first_name}}</td>
-                <td>{{$person->second_name}}</td>
+                <td>{{$person->last_name}}</td>
                 <td>{{$person->personal_code}}</td>
                 <td>{{$person->email_address}}</td>
                 <td>{{$person->phone_number}}</td>
