@@ -40,5 +40,8 @@ public $timestamps = false;
     public function user() {
         return $this->belongsTo(User::class);
     }
-
+    public function __toString(): string
+    {
+        return $this->name . ' ' . $this->surname;
+    }
 }

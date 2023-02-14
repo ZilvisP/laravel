@@ -18,25 +18,7 @@
 
             </div>
             <div class="card-action">
-                <a href="{{ route('persons.edit', $person->id) }}"
-                   data-tooltip="Edit"
-                   class="tooltipped waves-effect waves-light green btn-small">
-                    <i class="tiny material-icons">Edit</i>
-                </a>
-                <a href="{{ route('persons.index') }}"
-                   data-tooltip="Back to persons"
-                   class="tooltipped waves-effect waves-light green btn-small">
-                    <i class="tiny material-icons">Back</i>
-                </a>
-
-                <form action="{{ route('persons.destroy', $person->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit"data-tooltip="destroy"
-                            class="tooltipped waves-effect waves-light red btn-small">
-                        <i class="tiny material-icons">delete</i>
-                    </button>
-                </form>
+                <x-forms.buttons.action :model="$person" mainRoute="persons" />
             </div>
         </div>
     </div>

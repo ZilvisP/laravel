@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $description
  * @property string $image
  * @property int $status_id
- * @property Status $status
+ * @property Status $statuses
  * @property int $parent_id
  * @property string $sort_order
  * @property Carbon $created_at
@@ -38,5 +38,10 @@ class Category extends Model
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }

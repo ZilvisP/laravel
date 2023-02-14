@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('statuses', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable(false);
-            $table->string('type')->nullable(false); // order, payment, etc.
+            $table->string('type')->nullable(false); // orders, payment, etc.
             $table->timestamps();
         });
     }

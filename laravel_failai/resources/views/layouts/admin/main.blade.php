@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{{--    In-Progress--}}
-{{--    <link rel="stylesheet" href="../../../css/app.css" / veikia bet tik del to, kad naujasnes narsykles atpazista >--}}
-    <link rel="stylesheet" href="/css/app.css" />
+    {{--    In-Progress--}}
+    <link rel="stylesheet" href="/css/app.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
 </head>
 <body>
 
 <div class="main_grid">
-
     @include('layouts.admin.header')
+</div>
     <div class="container">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -22,10 +22,9 @@
         @endif
 
         @yield('content', 'Default content')
-    </div>
+
     <br>
-
-</div>
-
+        @include('layouts.admin.footer')
+    </div>
 </body>
 </html>

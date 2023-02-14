@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property Category $category
- * @property Status $status
+ * @property Status $statuses
  */
 class Product extends Model
 {
@@ -45,5 +45,9 @@ class Product extends Model
     public function status()
     {
         return $this->belongsTo(Status::class);
+    }
+    public function __toString(): string
+    {
+        return $this->name;
     }
 }

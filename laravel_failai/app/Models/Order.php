@@ -16,9 +16,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $updated_at
  * @property Address $addresses
  * @property User $user
- * @property Status $status
+ * @property Status $statuses
  */
-class Orders extends Model
+class Order extends Model
 {
     use HasFactory;
 
@@ -35,6 +35,6 @@ class Orders extends Model
         return $this->belongsTo(User::class);
     }
 public function addresses() {
-        return $this->belongsTo(Addresses::class);
+        return $this->belongsTo(Address::class);
 }
 }

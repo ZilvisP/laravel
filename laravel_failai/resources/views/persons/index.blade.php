@@ -30,12 +30,7 @@
                 <td>{{$person->address_id}}</td>
                 <td>{{$person->user_id}}</td>
                 <td>
-                    <a href="{{route('persons.edit', $person->id)}}" class="btn btn-primary">Edit</a>
-                    <form action="{{route('persons.destroy', $person->id)}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    <x-forms.buttons.action :model="$person" mainRoute="persons" />
                 </td>
             </tr>
         @endforeach

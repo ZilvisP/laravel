@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * @property Status $status
+ * @property Status $statuses
  */
 class Payment extends Model
 {

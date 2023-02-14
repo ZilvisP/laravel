@@ -30,12 +30,7 @@
                 <td>{{$category->parent_id}}</td>
                 <td>{{$category->sort_order}}</td>
                 <td>
-                    <a href="{{route('categories.edit', $category->id)}}" class="btn btn-primary">Edit</a>
-                    <form action="{{route('categories.destroy', $category->id)}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
+                    <x-forms.buttons.action :model="$category" mainRoute="categories" />
                 </td>
             </tr>
         @endforeach

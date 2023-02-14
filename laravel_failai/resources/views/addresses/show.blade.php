@@ -14,25 +14,7 @@
                 <p>Post code: {{$address->post_code}}</p>
             </div>
             <div class="card-action">
-                <a href="{{ route('addresses.edit', $address->id) }}"
-                   data-tooltip="Edit"
-                   class="tooltipped waves-effect waves-light green btn-small">
-                    <i class="tiny material-icons">edit</i>
-                </a>
-                <a href="{{ route('addresses.index') }}"
-                   data-tooltip="Grįžti į pradinį"
-                   class="tooltipped waves-effect waves-light green btn-small">
-                    <i class="tiny material-icons">Back</i>
-                </a>
-
-                <form action="{{ route('addresses.destroy', $address->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" data-tooltip="destroy"
-                            class="tooltipped waves-effect waves-light red btn-small">
-                        <i class="tiny material-icons">delete</i>
-                    </button>
-                </form>
+                <x-forms.buttons.action :model="$address" mainRoute="addresses" />
             </div>
         </div>
     </div>

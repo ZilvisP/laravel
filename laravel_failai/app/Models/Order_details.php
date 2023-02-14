@@ -16,9 +16,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $status_id
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * @property Orders $order
+ * @property Order $orders
  * @property Product $product
- * @property Status $status
+ * @property Status $statuses
  */
 
 class Order_details extends Model
@@ -42,9 +42,12 @@ class Order_details extends Model
         return $this->belongsTo(Product::class);
     }
     public function order() {
-        return $this->belongsTo(Orders::class);
+        return $this->belongsTo(Order::class);
     }
-
+    public function __toString(): string
+    {
+        return $this->product_name;
+    }
 }
 
 

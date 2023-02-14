@@ -4,31 +4,24 @@
         <div class="col s12 m3">
             <div class="card">
                 <div class="card-image">
-                    <img src="https://picsum.photos/200"> <br>
+
+                    <img src="{{$product->image}}" alt=""><br>
+
                    <h2><span class="card-title" style="color: #c57f29">{{ $product->name }}</span></h2>
                 </div>
                 <div class="card-content">
                     <div>ID: {{$product->id}}</div>
-                    <p>Price: {{ $product->price }}</p>
+                    <p>Slug: {{ $product->slug}}</p>
                     <p>Description: {{ $product->description }}</p>
+                    <p>Image: {{ $product->image}}</p>
                     <p>Categories: {{ $product->category->name }}</p>
-                    <p>Creation date: {{ $product->created_at }}</p>
-                    <p>Last updated: {{ $product->updated_at }}</p>
+                    <p>Color: {{ $product->color}}</p>
+                    <p>Size: {{ $product->size}}</p>
+                    <p>Price: {{ $product->price}}</p>
+                    <p>Status: {{ $product->status->name}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="{{ route('products.edit', $product->id) }}"
-                       data-tooltip="Redaguoti"
-                       class="tooltipped waves-effect waves-light green btn-small">
-                        <i class="tiny material-icons">edit</i>
-                    </a>
-                    <form action="{{ route('products.destroy', $product->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"data-tooltip="Šalinti"
-                                class="tooltipped waves-effect waves-light red btn-small">
-                            <i class="tiny material-icons">delete</i>
-                        </button>
-                    </form>
+                    <x-forms.buttons.action :model="$product" mainRoute="products" />
                 </div>
             </div>
         </div>

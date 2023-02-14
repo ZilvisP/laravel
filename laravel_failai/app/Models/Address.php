@@ -21,7 +21,22 @@ class Address extends Model
         'street',
         'post_code',
     ];
-    protected $guarded = [
-    ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function __toString(): string
+    {
+        return implode(
+            ' ',
+            array_filter([
+                $this->house_number,
+                $this->apartment_number,
+                $this->zip,
+                $this->state,
+            ]),
+        );
+    }
 }

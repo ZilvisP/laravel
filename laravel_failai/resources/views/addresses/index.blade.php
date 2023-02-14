@@ -23,12 +23,7 @@
                     <td>{{$address->street}}</td>
                     <td>{{$address->post_code}}</td>
                     <td>
-                        <a href="{{route('addresses.edit', $address->id)}}" class="btn btn-primary">Edit</a>
-                        <form action="{{route('addresses.destroy', $address->id)}}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
+                        <x-forms.buttons.action :model="$address" mainRoute="addresses" />
                     </td>
                 </tr>
             @endforeach

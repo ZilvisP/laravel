@@ -2,7 +2,7 @@
 @extends('layouts.admin.main')
 @section('content')
     <h1>Editing Product</h1>
-    <form action="{{route('products.update', $product)}}" method="post">
+    <form action="{{route('products.update', $product)}}" method="post" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <input type="text" name="name" placeholder="Name" value="{{old('name') ?? $product->name}}"
@@ -11,8 +11,13 @@
                class="@error('slug')is-invalid @enderror"><br>
         <input type="text" name="description" placeholder="Description" value="{{old('description') ?? $product->description}}"
                class="@error('description')is-invalid @enderror"><br>
-        <input type="text" name="image" placeholder="Image" value="{{old('image') ?? $product->image}}"
-               class="@error('image')is-invalid @enderror"><br>
+
+        <input type="file" name="foto" placeholder="foto" value="{{old('foto') ?? $product->image}}"
+               class="@error('foto')is-invalid @enderror"><br>
+        {{--        <input type="file" name="foto">--}}
+
+
+
         <input type="text" name="category_id" placeholder="Category ID" value="{{old('category_id') ?? $product->category_id}}"
                class="@error('category_id')is-invalid @enderror"><br>
         <input type="text" name="color" placeholder="Color" value="{{old('color') ?? $product->color}}"

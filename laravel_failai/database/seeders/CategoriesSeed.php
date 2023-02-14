@@ -15,7 +15,7 @@ class CategoriesSeed extends Seeder
      *
      * @return void
      */
-//  pasikeiciam i funkcija updateorcreate  public function run()
+//  pasikeiciam i funkcija updateorcreate  public_html function run()
 //    {
 //        DB::table('categories')->truncate();
     public function run()

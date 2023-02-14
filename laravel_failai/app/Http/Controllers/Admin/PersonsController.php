@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\PersonRequest;
 use App\Models\Person;
-use Illuminate\Http\Request;
 
 class PersonsController extends Controller
 {
@@ -24,7 +24,7 @@ class PersonsController extends Controller
         return redirect()->route('persons.show', $persons);
 
 //Pasnaudojant Manageri, kuris sukurs useri jei neegzistuoja
-//        public function store(PersonStoreRequest $request)
+//        public_html function store(PersonStoreRequest $request)
 //    {
 //        $person = $this->manager->createCustomer($request);
 //        return redirect()->route('persons.show', $person);

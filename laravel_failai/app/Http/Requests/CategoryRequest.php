@@ -57,9 +57,9 @@ class CategoryRequest extends FormRequest
 
             'status_id.required' => 'Status id required',
             'status_id.integer' => 'Status ID Must be type of integer',
-            'status_id.exists' => 'Chosen status ID value does not exist in our statuses list, if none of statuses match yours you can create new! ',
-            'sort_order.required' => 'Sort order required',
-            'sort_order.integer' => 'Sort order Must be type of integer',
+            'status_id.exists' => 'Chosen statuses ID value does not exist in our statuses list, if none of statuses match yours you can create new! ',
+            'sort_order.required' => 'Sort orders required',
+            'sort_order.integer' => 'Sort orders Must be type of integer',
 
             'parent_id.required' => 'Parent ID required',
             'parent_id.integer' => 'Parent ID Must be type of integer',

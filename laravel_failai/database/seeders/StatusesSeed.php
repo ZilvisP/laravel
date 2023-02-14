@@ -16,11 +16,11 @@ class StatusesSeed extends Seeder
     public function run()
     {
         $statuses = [
-            ['name' => 'Naujas', 'type' => 'order'],
-            ['name' => 'Pateiktas', 'type' => 'order'],
-            ['name' => 'Patvirtintas', 'type' => 'order'],
-            ['name' => 'Atšauktas', 'type' => 'order'],
-            ['name' => 'Atlikta', 'type' => 'order'],
+            ['name' => 'Naujas', 'type' => 'orders'],
+            ['name' => 'Pateiktas', 'type' => 'orders'],
+            ['name' => 'Patvirtintas', 'type' => 'orders'],
+            ['name' => 'Atšauktas', 'type' => 'orders'],
+            ['name' => 'Atlikta', 'type' => 'orders'],
 
             ['name' => 'Naujas', 'type' => 'payment'],
             ['name' => 'Pateiktas', 'type' => 'payment'],

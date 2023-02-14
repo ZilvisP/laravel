@@ -8,9 +8,14 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Title</th>
+                    <th>Name</th>
+                    <th>Slug</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Category_id</th>
+                    <th>Size</th>
                     <th>Price</th>
-                    <th>Actions</th>
+                    <th>Status_id</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -26,12 +31,7 @@
                         <td>{{$product->price}}</td>
                         <td>{{$product->status_id}}</td>
                         <td>
-                            <a href="{{route('products.edit', $product->id)}}" class="btn btn-primary">Edit</a>
-                            <form action="{{route('products.destroy', $product->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
+                            <x-forms.buttons.action :model="$product" mainRoute="products" />
                         </td>
                     </tr>
                 @endforeach
