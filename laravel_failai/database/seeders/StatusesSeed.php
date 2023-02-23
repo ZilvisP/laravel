@@ -16,30 +16,30 @@ class StatusesSeed extends Seeder
     public function run()
     {
         $statuses = [
-            ['name' => 'Naujas', 'type' => 'orders'],
-            ['name' => 'Pateiktas', 'type' => 'orders'],
-            ['name' => 'Patvirtintas', 'type' => 'orders'],
-            ['name' => 'Atšauktas', 'type' => 'orders'],
-            ['name' => 'Atlikta', 'type' => 'orders'],
+            ['name' => 'new', 'type' => 'order'],
+            ['name' => 'in_progress', 'type' => 'order'],
+            ['name' => 'confirmed', 'type' => 'order'],
+            ['name' => 'canceled', 'type' => 'order'],
+            ['name' => 'done', 'type' => 'order'],
 
-            ['name' => 'Naujas', 'type' => 'payment'],
-            ['name' => 'Pateiktas', 'type' => 'payment'],
-            ['name' => 'Patvirtintas', 'type' => 'payment'],
-            ['name' => 'Atšauktas', 'type' => 'payment'],
-            ['name' => 'Atlikta', 'type' => 'payment'],
+            ['name' => 'new', 'type' => 'payment'],
+            ['name' => 'in_progress', 'type' => 'payment'],
+            ['name' => 'confirmed', 'type' => 'payment'],
+            ['name' => 'canceled', 'type' => 'payment'],
+            ['name' => 'done', 'type' => 'payment'],
 
-            ['name' => 'Aktyvus', 'type' => 'user'],
-            ['name' => 'Neaktyvus', 'type' => 'user'],
-            ['name' => 'Blokuotas', 'type' => 'user'],
-            ['name' => 'Ištrintas', 'type' => 'user'],
+            ['name' => 'active', 'type' => 'user'],
+            ['name' => 'inactive', 'type' => 'user'],
+            ['name' => 'blocked', 'type' => 'user'],
+            ['name' => 'deleted', 'type' => 'user'],
 
-            ['name' => 'Aktyvus', 'type' => 'product'],
-            ['name' => 'Neaktyvus', 'type' => 'product'],
-            ['name' => 'Ištrintas', 'type' => 'product'],
+            ['name' => 'active', 'type' => 'product'],
+            ['name' => 'inactive', 'type' => 'product'],
+            ['name' => 'deleted', 'type' => 'product'],
 
-            ['name' => 'Aktyvi', 'type' => 'category'],
-            ['name' => 'Neaktyvi', 'type' => 'category'],
-            ['name' => 'Ištrinta', 'type' => 'category']
+            ['name' => 'active', 'type' => 'category'],
+            ['name' => 'inactive', 'type' => 'category'],
+            ['name' => 'deleted', 'type' => 'category']
         ];
 
         foreach ($statuses as $status) {

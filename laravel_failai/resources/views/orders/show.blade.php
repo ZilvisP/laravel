@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-image">
                     <img src="https://picsum.photos/200"> <br>
-                    <h2><span class="card-title" style="color: #c57f29">{{$order->name}}</span></h2>
+{{--                    <h2><span class="card-title" style="color: #c57f29">{{$order->name}}</span></h2>--}}
                 </div>
                 <div class="card-content">
                     <div>ID: {{$order->id}}</div>

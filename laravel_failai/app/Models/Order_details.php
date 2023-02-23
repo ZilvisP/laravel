@@ -26,14 +26,16 @@ class Order_details extends Model
     use HasFactory;
 
     protected $fillable = [
-        'quantity',
+        'order_id',
         'product_name',
+        'product_id',
+        'quantity',
+        'price',
+        'Total',
     ];
     protected $guarded = [
-        'Total',
-        'order_id',
-        'product_id',
         'status_id'
+
     ];
     public function status() {
         return $this->belongsTo(Status::class);

@@ -8,6 +8,11 @@ use App\Models\Order;
 
 class OrdersController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Order::class, 'order');
+    }
+
     public function index()
     {
         $orders = Order::all();
@@ -22,12 +27,13 @@ class OrdersController extends Controller
     public function store(OrderRequest $request)
     {
         $order = Order::create($request->all());
+        $this->dispatch(new OrderCreated($order));
         return redirect()->route('orders.show', $order);
     }
 
     public function show(Order $order)
     {
-        return view('orders.show', ['orders' => $order]);
+        return view('orders.show', ['order' => $order]);
     }
 
     public function edit(Order $order)

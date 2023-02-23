@@ -1,11 +1,11 @@
 <?php
 
 namespace App\Http\Requests;
-
+use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class ProductRequest extends FormRequest
+class ProductRequest extends FormRequest implements ProductRequestInterface
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -39,6 +39,12 @@ class ProductRequest extends FormRequest
             'status_id' => ['required', 'integer', 'exists:statuses,id'],
         ];
     }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
 
     public function messages()
     {

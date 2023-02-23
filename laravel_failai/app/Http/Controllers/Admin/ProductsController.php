@@ -4,10 +4,20 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
+use App\Http\Requests\ProductRequestInterface;
+use App\Managers\FileManager;
+use App\Managers\ProductManager;
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ProductsController extends Controller
 {
+    public function __construct(protected FileManager $fileManager, ProductManager $productManager)
+    {
+        $this->productManager = $productManager;
+    }
     public function index()
     {
         $products = Product::query()->with(['category', 'status'])->get();
@@ -15,71 +25,47 @@ class ProductsController extends Controller
         return view('products.index', compact('products'));
     }
 
-    public function create()
-    {
-        return view('products.create');
-    }
-
     public function store(ProductRequest $request)
     {
         $product = Product::create($request->all());
-
-        // Tikriname, ar užklausa turi failą ir ar jis yra validus paveikslėlio failas
-        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            // Įkeliame failą į /tmp/ aplanką
-            $image = $request->file('foto');
-
-            // Gaunamas paveikslelio pavadinimą
-            $clientOriginalName = $image->getClientOriginalName();
-
-            // Atlieka /tml/phpHG948fWRFG paveikslelio perkelima į public_html/img/products katalogą
-            $image->move(public_path('img/products'), $clientOriginalName);
-
-            // Ši kodo dalis atsakinga uz paveiksliuko isaugojima produkto lenteleje
-            $product->image = '/img/products/'. $clientOriginalName;
-            $product->save();
-        }
+        $this->productManager->addImage($product, $request);
 
         return redirect()->route('products.show', $product);
+    }
+
+    public function create()
+    {
+        return view('products.create_edit');
+    }
+
+    public function show(Product $product)
+    {
+        return view('products.show', ['product' => $product]);
     }
 
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
-    }
-    public function show (Product $product)
-    {
-        return view('products.show', compact('product'));
+        return view('products.create_edit', compact('product'));
     }
 
-    public
-    function update(ProductRequest $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
         $product->update($request->all());
-
-        // Tikriname, ar užklausa turi failą ir ar jis yra validus paveikslėlio failas
-        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            // Įkeliame failą į /tmp/ aplanką
-            $image = $request->file('foto');
-
-            // Gaunamas paveikslelio pavadinimą
-            $clientOriginalName = $image->getClientOriginalName();
-
-            // Atlieka /tml/phpHG948fWRFG paveikslelio perkelima į public_html/img/products katalogą
-            $image->move(public_path('img/products'), $clientOriginalName);
-
-            // Ši kodo dalis atsakinga uz paveiksliuko isaugojima produkto lenteleje
-            $product->image = '/img/products/'. $clientOriginalName;
-            $product->save();
-        }
+        $this->productManager->updateMainImage($product, $request);
 
         return redirect()->route('products.show', $product);
     }
 
-    public
-    function destroy(Product $product)
+    public function destroy(Product $product)
     {
         $product->delete();
         return redirect()->route('products.index');
+    }
+
+    public function destroyFile(File $file)
+    {
+        $file?->deleteOrFail();
+
+        return redirect()->back()->with('success', 'File deleted');
     }
 }

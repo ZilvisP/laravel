@@ -1,22 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Product;
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     /**
      * Handle the incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
      * @return Application|Factory|View
      */
     public function __invoke(Request $request)
     {
-        return view('welcome');
+        $products = Product::query()->with(['category', 'status'])->get();
+        return view('fronteshop.baseshop', ['products' => $products]);
     }
 }

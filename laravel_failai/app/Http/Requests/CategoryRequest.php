@@ -26,7 +26,7 @@ class CategoryRequest extends FormRequest
         return [
             'slug' => ['required', 'string', 'min:2', 'max:255'],
             'name' => ['required', 'string', 'min:2', 'max:255'],
-            'image' => [ 'string'],
+//            'image' => [ 'string'],
             'description' => ['string', 'max:255'],
             'status_id' => ['required', 'integer', 'exists:statuses,id'],
             'sort_order' => ['required', 'integer'],
